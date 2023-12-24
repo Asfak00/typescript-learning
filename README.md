@@ -3,6 +3,7 @@
 - [Introduction](#What-is-TypeScript)
 - [Installation](#TypeScript-Install)
 - [How works TypeScript](#How-works-TypeScript)
+- [Data Types](#Data-Types)
 
 </br>
 
@@ -43,3 +44,69 @@ tsc file-name
 // আর আপনি যদি চান না যে বার বার এই কমান্ড রান করবেন তাহলে নিচের কমান্ড দিতে পারেন।
 tsc file-name --watch
 ```
+
+</br>
+
+# Data Types
+
+Data Types এর মধ্যে **any** হচ্ছে সুপার ডেটা টাইপ এবং এর মধ্যে রয়েছে Built-in data types ও user define data types।
+
+### Built-in data types
+
+<ul>
+    <li>Number</li>
+    <li>String</li>
+    <li>Boolean</li>
+    <li>Undefined</li>
+    <li>Null</li>
+    <li>Void</li>
+</ul>
+
+**সব ডেটা টাইপের একটা করে example নিচে দেখানো হলোঃ**
+
+```js
+let name = "Rahi Ahmed"; // String
+let Number = 013; // Number
+let isMale = true; // Boolean
+let hasMoney = null; // Null
+let houseAddress = undefined; // Undefined
+```
+
+> উপরে যে ডেটা টাইপের সাথে পরিচয় করানো হলো এগুলো হচ্ছে any এর built-in ডেটা টাইপ। এগুলো আমরা ব্যবহার করে অভ্যস্ত।
+
+### User define data types
+
+<ul>
+    <li>Arrays</li>
+    <li>Enums</li>
+    <li>Classes</li>
+    <li>Interfaces</li>
+</ul>
+
+### Union Data Type
+
+কোনো সময় আমাদের একই variable অথবা function এর মধ্যে ১ এর অধিক ডেটা টাইপ আসতে পারে তখন আমরা ইউনিয়ন (Union) ব্যাবহার করবো সেটা হ্যান্ডেল করার জন্য। Union এর মাধ্যমে আমরা কয়েকটি ডেটা টাইপকে একত্রিত করতে পারি। নিচে তার example দেওয়া হলোঃ
+
+```js
+let person: string | number;
+
+person = "John";
+person = 123;
+```
+
+উপরে person নামের variable টি ২টি ডেটা টাইপ নিতে পারবে string এবং number এবং ২টি আলাদা ডেটা টাইপ নেওয়ার সময় কোনো error দিবে না কারণ আমরা Union data type এর মাধ্যমে সেটা বলে দিয়েছি যে আমাদের ২টি ডেটা টাইপ লাগবে।
+
+একইভাবে function এর মধ্যে ও আমরা Union ব্যবহার করতে পারবো। নিচে example দেওয়া হলোঃ
+
+```js
+function clientId(id: string | number) {
+  console.log(id);
+}
+
+clientId("123");
+clientId(123);
+```
+
+উপরে clientId নামের function টি id নামে যে পেরামিটার নিবে সেখানে ইনপুট হিসেবে ২টি ডেটা টাইপ দেওয়া যাবে string এবং number এবং ২টি আলাদা ডেটা টাইপ নেওয়ার সময় কোনো error দিবে না কারণ আমরা Union data type এর মাধ্যমে সেটা বলে দিয়েছি যে আমাদের ২টি ডেটা টাইপ লাগবে।
+
+> উদাহরণে ২টি ডেটা টাইপ কম্বাইন করে দেখানো হয়েছে কিন্তু Union এর মাধ্যমে যতগুলো ডেটা টাইপ ইচ্ছা আমরা কম্বাইন করতে পারবো।
