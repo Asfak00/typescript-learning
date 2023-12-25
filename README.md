@@ -128,3 +128,64 @@ let info: (string | number)[];
 
 info = ["Rahi", 23];
 ```
+
+### Tuple Data Type
+
+অনেক সময় আমাদের (key, value) নিয়ে array তে কাজ করার প্রয়োজন হতে পারে মাল্টিপল টাইপের ডাটা নিয়ে তখন আমরা এই **টাপল** ডাটা টাইপ ব্যবহার করে সেটা করতে পারি।
+নিচে উদাহরণ দেওয়া হলোঃ
+
+```js
+let data: [number, string];
+data = [101, "Rahi"];
+data.push(303, "Alamin");
+
+console.log(data);
+```
+
+Tuple data type এ আমরা variable define করে নিবো এবং সেই variable এর ডেটা টাইপ বলে দিবো ( [] ) থার্ড ব্র্যাকেট এর মধ্যে ( , ) এর মাধ্যমে ( যদি ১ এর অধিক ডেটা টাইপ দেওয়া হয় তাহলে )। এরপর নরমাল array তে যেভাবে কাজ করা হয় ওইভাবেই যেকোনো অপারেশন চালানো যাবে কিন্তু যেহেতু এটা typescript তাই আমরা variable define করার সময় যে order এ ডেটা টাইপ দিয়েছি সেই order এ কিন্তু আমাদের ডেটা পুশ করতে হবে array তে।
+
+</br>
+
+### Enum Data Type
+
+অনেক সময় আমাদের প্রোগ্রামে এমন কিছু variable থাকে যেগুলোর value সব একই থাকে এবং আমরা সেগুলো বিভিন্ন জায়গায় ব্যবহার করে থাকি এই কাজটি রিডেবল করতে typescript আমাদের দিচ্ছে Enum Data Type নামে একটি ডেটা টাইপ যেটার মধ্যে আমরা আমাদের constant variable গুলো রাখতে পারবো। এবং array তে আমরা যেভাবে প্রতিটি item ধরতে পারতাম ঠিক সেইমভাবে Enum Data Type এ ও ধরতে পারবো। আমরা Enum Data Type switch statements, comparisons এবং আর অনেক জায়গায় ব্যবহার করতে পারবো। Enum Data Type এর মাধ্যমে আমরা আমাদের কোডকে আর বেশি readable করতে পারবো। **Enum Data Type এ আমরা duplicate কোনো কিছু দিতে পারবো না।** Enum Data Type এ আমরা কোনো variable declear করলে সেটার value অটোমেটিক সেট হয়ে যায় ( ০ থেকে শুরু হয়ে যতগুলো item থাকবে তত পর্যন্ত ১ -> ১ করে বাড়তে থাকবে ) কিন্তু আমরা চাইলে নিজেদের value দিতে পারবো ( ওইটা ডিফল্ট হিসেবে সেট হয় )।
+
+**Enum Data Type ৩ ধরনের**
+
+- Numeric Enums - ( এটিতে আমরা সংখ্যা এবং মৌলিক সংখ্যা রাখতে পারবো )
+
+- String Enums - ( এটিতে আমরা string রাখতে পারবো )
+
+- Heterogeneous Enums - ( এটিতে আমরা Numeric Enums এবং String Enums সমন্বয় করে রাখতে পারবো )
+
+</br>
+
+**Enum Data Type Syntax**
+<img src="./Diagram images/enum systax.png" alt="image">
+
+উপরের কিভাবে আমরা নিজেরা কোনো variable এর value সেট করবো সেটা দেখানো হয় নি! **নিচে সেটা দেখানো হবে**
+
+</br>
+
+**Set The Value In Enum Variable**
+<img src="./Diagram images/set value enum variable.png" alt="image">
+
+এভাবে আমরা যেকোনো variable এ value সেট করতে পারি আর যদি কোনো value সেট না করি তাহলে Enum ডিফল্ট ভাবে একটি নাম্বার value সেট করে দেয়।
+
+</br>
+
+### Any Data Type
+
+Any Data Type তখনই আমাদের প্রয়োজন হয় যখন আমি জানি না যে আমাদের এই ফাংশন এর জন্য কোন ধরণের ডেটা আসতে পারে ( মানে হয়তো আমার string এর ও প্রয়োজন আছে সাথে number, object, array or boolean etc প্রয়োজন রয়েছে ) সেক্ষেত্রে আমরা Data Type হিসেবে Any ব্যবহার করতে পারি তাহলে যেকোনো ধরণের ডেটা আসলেও কোনো error দিবে না।
+
+```js
+let form: any;
+form = 10;
+form = "string";
+form = true;
+form = {};
+form = [];
+form = function () {};
+form = null;
+form = undefined;
+```
