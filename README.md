@@ -229,3 +229,52 @@ newUser = { name: "Rahi", age: 19 };
 ```
 
 উপরে আমরা newUser নামে একটি object declear করেছি এবং এর মধ্যে যে entries গুলো থাকবে সেগুলোর আলাদা আলাদা করে ডেটা টাইপ ডিফাইন করে দিলাম এবং নিচে সেই অবজেক্ট এর মধ্যে ২টি value এসাইন করলাম। **কিন্তু আমরা যদি চাই যে উপরে যে অবজেক্ট রয়েছে তার মধ্যের age কে দিলে ও হবে না দিলে ও হবে মানে অপশনাল রাখতে চাইলে `?` এটা ব্যবহার করতে পারি। তার সিনট্যাক্স এইরকম হবে `age?: number`। তাহলে আমাদের এই প্রপার্টি টি অপশনাল হয়ে যাবে এবং এই প্রপার্টি যদি না দেওয়া হয় তাহলে কোনো error দিবে না।**
+
+</br>
+
+### Custom Data Type
+
+যখন বড় প্রোগ্রাম বানানো হয় তখন একই ডেটা টাইপ নিয়ে অনেক বার লিখতে হয় যার জন্য টাইপস্কিপ্ট আমাদের দিচ্ছে নিজের কাস্টম ডেটা টাইপ বানানোর সুযোগ। কাস্টম ডেটা টাইপ এর সবচেয়ে বড় সুবিধা হচ্ছে এটি আমাদের কোডকে অনেক বেশি রিডেবল বানিয়ে দেয় এবং বাগ ফ্রি বানায় কোডকে। কাস্টম ডেটা টাইপ আমরা সবকিছুর জন্য বানাতে পারবো যেমন - ( function, variable, object, class etc )। নিচে কোডগুলোর সাহায্যে দেখানো হলোঃ
+
+```js
+type myCustomDataType = {
+  name: string,
+  age: number,
+  isMarried: boolean,
+  kids: string[],
+  job: {
+    title: string,
+    salary: number,
+  },
+};
+```
+
+উপরে একটি custom data type বানানো হয়েছে এবং অবশ্যই আমরা যখন custom data type বানাবো তখন আমাদের `type` keyword লিখতে হবে। উপরে যে ডেটা টাইপ বানানো হয়েছে সেটা একটি অবজেক্ট।
+
+```js
+// এখানে allUsers নামে একটি variable এর ডেটা টাইপ হিসেবে দেওয়া হয়েছে myCustomDataType কে এবং এটিকে একটি array of object বানানো হয়েছে।
+let allUsers: myCustomDataType[];
+
+// allUsers কে ডিফাইন করা হয়েছে শুধু এখানে।
+allUsers = [];
+
+// এখানে একটি নতুন user বানানোর জন্য newUser variable এর ডেটা টাইপ হিসেবে myCustomDataType কে দেওয়া হয়েছে কারণ myCustomDataType এর মধ্যে যে যে প্রপার্টি রয়েছে আমার সব প্রপার্টি দরকার এর জন্যই।
+let newUser: myCustomDataType;
+
+// এখানে newUser এর প্রপার্টি গুলোর value দেওয়া হচ্ছে এবং যেহেতু আমরা newUser এর ডেটা টাইপ হিসেবে myCustomDataType দিয়েছি তাই myCustomDataType এর মধ্যে যে যে প্রপার্টি রয়েছে সব এই newUser এর মধ্যে চলে এসেছে এবং এখন যখন আমি newUser এর value দিতে যাচ্ছি তখন আমাদের ওই সব প্রপার্টি এর value দিতে হবে যেগুলো রয়েছে myCustomDataType এর মধ্যে।
+newUser = {
+  name: "John",
+  age: 25,
+  isMarried: false,
+  kids: ["Jane", "Jack"],
+  job: {
+    title: "Software Engineer",
+    salary: 100000,
+  },
+};
+
+// সবার শেষে আমরা এই newUser কে পুশ করে দিচ্ছি allUsers এর মধ্যে। এবং এখন যদি আমরা allUsers কে console.log করি তাহলে একটি object পাবো।
+allUsers.push(newUser);
+```
+
+**উপরে তো আমরা একটি অবজেক্টের জন্য custom data type বানিয়ে দেখেছি কিন্তু আমরা custom data type সব কিছুর জন্য বানাতে পারবো (variable, function, class etc )।**
