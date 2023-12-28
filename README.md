@@ -278,3 +278,32 @@ allUsers.push(newUser);
 ```
 
 **উপরে তো আমরা একটি অবজেক্টের জন্য custom data type বানিয়ে দেখেছি কিন্তু আমরা custom data type সব কিছুর জন্য বানাতে পারবো (variable, function, class etc )।**
+
+</br>
+
+### Class Typescript
+
+Typescript এ জাভাস্কিপ্টের সবকিছুর Syntax সেইম শুধু পরিবর্তন হয় ডেটা টাইপ বলে দেওয়ার ধরনটা। তেমনি ভাবে এখন দেখবো Typescript এ কিভাবে Class ডিফাইন করতে হয় এবং কিভাবে Class এর মধ্যে থাকা Property গুলোর ডেটা টাইপ বলে দেওয়া যায়। নিচে দেখানো হলোঃ
+
+```js
+class User {
+  name: string;
+  age: number;
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+
+  Show() {
+    console.log(`username: ${this.name}, age: ${this.age}`);
+  }
+}
+
+let user = new User("John", 20);
+user.Show();
+
+let user2 = new User("Jane", 30);
+user2.Show();
+```
+
+উপরে একটি Class তৈরি করা হয়েছে। তার মধ্যে name, age ২টি Property দেওয়া হয়েছে এবং সেগুলোর ডেটা টাইপ বলে দেওয়া হয়েছে। তারপর আউটপুট দেখার জন্য Show নামে একটি ফাংশন বানানো হয়েছে এবং তার মধ্যে Console করা হয়েছে।
