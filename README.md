@@ -4,6 +4,8 @@
 - [Installation](#TypeScript-Install)
 - [How works TypeScript](#How-works-TypeScript)
 - [Data Types](#Data-Types)
+- [Class](#Class-Typescript)
+- [Inheritance](#Inheritance)
 
 </br>
 
@@ -281,7 +283,7 @@ allUsers.push(newUser);
 
 </br>
 
-### Class Typescript
+# Class Typescript
 
 Typescript এ জাভাস্কিপ্টের সবকিছুর Syntax সেইম শুধু পরিবর্তন হয় ডেটা টাইপ বলে দেওয়ার ধরনটা। তেমনি ভাবে এখন দেখবো Typescript এ কিভাবে Class ডিফাইন করতে হয় এবং কিভাবে Class এর মধ্যে থাকা Property গুলোর ডেটা টাইপ বলে দেওয়া যায়। নিচে দেখানো হলোঃ
 
@@ -307,3 +309,54 @@ user2.Show();
 ```
 
 উপরে একটি Class তৈরি করা হয়েছে। তার মধ্যে name, age ২টি Property দেওয়া হয়েছে এবং সেগুলোর ডেটা টাইপ বলে দেওয়া হয়েছে। তারপর আউটপুট দেখার জন্য Show নামে একটি ফাংশন বানানো হয়েছে এবং তার মধ্যে Console করা হয়েছে।
+
+</br>
+
+# Inheritance
+
+Inheritance হলো একটি অবজেক্ট বা ক্লাস যা অন্য একটি অবজেক্ট বা ক্লাস থেকে একটি বা একাধিক প্রপার্টি ব্যবহার করতে সাহায্য করে। ধরুন, আপনার একটি ক্লাস বানানো রয়েছে এবং ওই ক্লাসের মধ্যে যতগুলো প্রপার্টি দেওয়া আছে সবগুলো প্রপার্টি অন্য আরেকটি কাজের জন্য আপনার প্রয়োজন। তাহলে একটি ক্লাস যখন রয়েছে সেটা ব্যবহার করা গেলে কোড রিডেবল হবে তাই না? আর ওইসময় Inheritance ব্যাবহার করার মাধ্যমে আগের ক্লাস কপি করে আনা যায় নতুন ক্লাস এর মধ্যে। নিচে কোড দেওয়া হলোঃ
+
+```js
+class User {
+  name: string;
+  age: number;
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+
+  Show() {
+    console.log(`username: ${this.name}, age: ${this.age}`);
+  }
+}
+
+const user = new User("John", 20);
+user.Show();
+
+class Student extends User {
+  studentId: number;
+  studentGender: string;
+
+  constructor(
+    name: string,
+    age: number,
+    studentId: number,
+    studentGender: string
+  ) {
+    super(name, age);
+    this.studentId = studentId;
+    this.studentGender = studentGender;
+  }
+
+  Show() {
+    console.log(
+      `username: ${this.name}, age: ${this.age} studentId: ${this.studentId}, studentGender: ${this.studentGender}`
+    );
+  }
+}
+
+const student = new Student("rahi", 19, 502386, "male");
+student.Show();
+```
+
+উপরের উদাহরণে প্রথমে একটি ক্লাস তৈরি করা হয়েছে User নামে এবং তার মধ্যে ২টি প্রপার্টি এবং আউটপুট দেখার জন্য একটি ফাংশন রয়েছে। আর নিচে আরেকটি ক্লাস তৈরি করা হয়েছে Student নামে যেখানেও একটি Student এর নাম, বয়স এর তথ্য লাগবে যার কারণে উপর থেকে User ক্লাস কে কপি করে নিয়ে আসা হয়েছে Student ক্লাস এর মধ্যে এবং Student ক্লাসে আর নতুন ২টি প্রপার্টি যুক্ত করা হয়েছে User ক্লাসে থাকা প্রপার্টি গুলোর সাথে। Student ক্লাসের মধ্যে যে `super()` দেখতে পাচ্ছেন, এটা হচ্ছে একটি keyword এবং এটি constructor প্যারেন্টের মধ্যে ব্যবহার করা হয় চাইল্ড কে আনার জন্য। এখানে name, age কে আনার জন্য ব্যবহার করা হয়েছে।
