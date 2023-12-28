@@ -7,6 +7,7 @@
 - [Class](#Class-Typescript)
 - [Inheritance](#Inheritance)
 - [Abstract Class](#Abstract-Class)
+- [Encapsulation ](#Encapsulation)
 
 </br>
 
@@ -400,3 +401,138 @@ abstract class Person {
 ```
 
 এভাবে Abstract তৈরি করা যাবে। কিন্তু একটা জিনিস যে যদি আমরা Abstract ক্লাসের মধ্যে Abstract মেথড তৈরি করি তাহলে আমরা যখন এই Abstract ক্লাস Inheritance করবো তখন অবশ্যই আমাদের Abstract মেথড ব্যবহার করতে হবে না হলে error দিবে। এবং যে এই Abstract ক্লাসকে Inheritance করবে সে তার মতো করে Abstract মেথডগুলোকে বলে দিতে পারবে যে তারা কি কাজ করবে তাদের ফাংশনালিটি কি।
+
+</br>
+
+# Encapsulation
+
+Encapsulation হচ্ছে Object-Oriented Programming এর ৪টি ফান্ডামেন্টাল এর মধ্যে একটি। এর দ্বারা একটি অব্জেক্টের আসল ফাংশন অথবা মেথডগুলো লুকিয়ে রাখা যায় ( পাবলিক, প্রাইভেট ) ইত্যাদি এর মাধ্যমে। Encapsulation ব্যবহারের মাধ্যমে ডাটার এক্সেস কনট্রোল করা সম্ভব। এর মাধ্যমে ডাটাকে প্রটেক্টেট রাখা সম্ভব। Encapsulation এর ৩টি key principles রয়েছে নিচে দেওয়া হলোঃ
+
+- Data Hiding
+- Access Control
+- Modularity
+
+### Data Hiding
+
+Encapsulation এর মুল উদ্দেশ্য হচ্ছে ডাটাকে সুরক্ষিত রাখা। যার জন্য Data Hiding ব্যবহার করা হয়। এর মাধ্যমে আমাদের যেসব implementation রয়েছে দেগুলোকে বাহিরের থেকে লুকিয়ে রাখা যায়। যেগুলোকে বাহিরে প্রদর্শন করতে চাই না সেগুলোকে প্রাইভেট করে দিতে পারি এবং সেগুলোকে এক্সেস করার জন্য ২টি পাবলিক মেথড তৈরি করতে পারি ( সেট এবং গেট ) নামে। Data Hiding unauthorized আক্সেস গুলো প্রতিরোধে সাহায্য করে।
+
+### Access Control
+
+Access Control এর মাধ্যমে আমাদের ডাটাগুলোর আক্সেস রাখতে পারি ( পাবলিক, প্রাইভেট, প্রটেক্টেড, রিডঅনলি )। Access Control এর মাধ্যমে এটা নিশ্চিত করা যায় যে ক্লাসে থাকা একটি নির্দিষ্ট প্রপার্টিকে বাহিরে থেকে আক্সেস করা সম্ভব অথবা না।
+
+### Modularity
+
+Modularity হলো একটি প্রোগ্রামিং প্যারাডাইম যা প্রোগ্রামকে ছোট একক ভাগে ভাগ করে তাদেরকে আলাদা আলাদা মডিউলে অর্থাৎ মডিউলার ইউনিটগুলি তৈরি করে। এই মডিউলার ইউনিটগুলি নিযে নিজের কাজ করতে পারে এবং একে অপরের উপর নির্ভরশীল না থাকতে হয় না।
+
+**নিচে Encapsulation এর Access Control থেকে ( Public, Private, Protected, ReadOnly ) দ্বারা কিভাবে একটি ডাটা মেইনটেইন করতে হয় তা দেখানো হলোঃ**
+
+```js
+// public access control
+class User {
+  public name: string;
+  public age: number;
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+
+  Show() {
+    console.log(`username: ${this.name}, age: ${this.age}`);
+  }
+}
+
+
+// private access control
+class User2 {
+  private name: string;
+  private age: number;
+
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+
+  Show() {
+    console.log(`username: ${this.name}, age: ${this.age}`);
+  }
+
+  GetAge() {
+    return this.age;
+  }
+
+  SetAge(age: number) {
+    this.age = age;
+  }
+
+  GetName() {
+    return this.name;
+  }
+
+  SetName(name: string) {
+    this.name = name;
+  }
+}
+
+
+// protected access control
+class User3 {
+  protected name: string;
+  protected age: number;
+
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+
+  Show() {
+    console.log(`username: ${this.name}, age: ${this.age}`);
+  }
+}
+
+class Employee extends User3 {
+  private salary: number;
+
+  constructor(name: string, age: number, salary: number) {
+    super(name, age);
+    this.salary = salary;
+  }
+
+  Show() {
+    console.log(
+      `username: ${this.name}, age: ${this.age}, salary: ${this.salary}`
+    );
+  }
+}
+
+
+// readonly access control
+class User4 {
+  readonly name: string;
+  readonly age: number;
+
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+
+  Show() {
+    console.log(`username: ${this.name}, age: ${this.age}`);
+  }
+}
+```
+
+- Public
+  </br>
+  আমরা সাধারণত যে কোড করে থাকি সেগুলো হচ্ছে পাবলিক। পাবলিক করা কোডগুলো আমরা read করতে পারি update করতে পারি এবং access করতে পারি।
+
+- Private
+  </br>
+  Private করা কোড আমরা শুধুমাত্র ক্লাসের ভিতর থেকে access, read, update করতে পারবো বাহিরে থেকে পারবো না। সেক্ষেত্রে আমাদের মেথড তৈরি করতে হবে সেটাকে edit or access করার জন্য।
+
+- Protected
+  </br>
+  Protected করা কোড আমরা বাহিরে থেকে access করতে পারবো না কিন্তু আমরা যদি extends করি অর্থাৎ Inheritance করি ওই ক্লাসকে তাহলে সেই Protected কোডকে আমরা access, read, update করতে পারবো।
+
+- ReadOnly
+  </br>
+  ReadOnly করা থাকলে আমরা শুধুমাত্র read করতে পারবো ডাটা কিন্তু কোনো update করতে পারবো না।
