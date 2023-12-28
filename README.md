@@ -3,6 +3,7 @@
 - [Introduction](#What-is-TypeScript)
 - [Installation](#TypeScript-Install)
 - [How works TypeScript](#How-works-TypeScript)
+- [TypeScript Configuration](#TypeScript-Configuration)
 - [Data Types](#Data-Types)
 - [Class](#Class-Typescript)
 - [Inheritance](#Inheritance)
@@ -47,6 +48,31 @@ tsc file-name
 
 // আর আপনি যদি চান না যে বার বার এই কমান্ড রান করবেন তাহলে নিচের কমান্ড দিতে পারেন।
 tsc file-name --watch
+```
+
+</br>
+
+# TypeScript Configuration
+
+- create src, public folder
+- Inside public folder create index.html, style.css and inside src folder create index.ts or other ts files
+- in terminal -> tsc --init
+- edit tsconfig.json as shown in the following example
+
+```json
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "rootDir": "./src",
+    "outDir": "./public",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
+  },
+  "include": ["./src"],
+  "files": ["./src/index.ts", "./src/app.ts"]
+}
 ```
 
 </br>
