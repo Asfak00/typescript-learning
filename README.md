@@ -1,4 +1,4 @@
-# Table of content
+# Table of content ( click to navigate )
 
 - [Introduction](#What-is-TypeScript)
 - [Installation](#TypeScript-Install)
@@ -8,7 +8,8 @@
 - [Class](#Class-Typescript)
 - [Inheritance](#Inheritance)
 - [Abstract Class](#Abstract-Class)
-- [Encapsulation ](#Encapsulation)
+- [Encapsulation](#Encapsulation)
+- [Function Signature](#Function-Signature)
 
 </br>
 
@@ -562,3 +563,33 @@ class User4 {
 - ReadOnly
   </br>
   ReadOnly করা থাকলে আমরা শুধুমাত্র read করতে পারবো ডাটা কিন্তু কোনো update করতে পারবো না।
+
+</br>
+
+# Function Signature
+
+Function Signature দ্বারা আমরা বলে দিতে পারি যে আমাদের ফাংশনটি কতগুলো প্যারামিটার নিবে, কি রিটার্ন করবে, প্যারামিটারগুলো কোন টাইপের হবে এইগুলো। এতে করে আমাদের কোডগুলো রিডেবল হয় এবং আমরা যখন ফাংশনটি ব্যবহার করতে যাবো তখন অটোমেটিক আমাদের সাজেস্ট করা হয় যে তোমার ফাংশন এই এই জিনিসগুলো চায় তোমাকে এইগুলোই দিতে হবে। এবং এর মাধ্যমে ইরর কমে যায়। নিচে ২টি এক্সাম্পল দেওয়া হলোঃ
+
+```js
+// Example 1
+let greet: (name: string) => void;
+
+greet = (name: string) => {
+  console.log(`My name is ${name}`);
+};
+greet("John");
+
+// Example 2
+let calc: (a: number, b: number, c: string) => number;
+
+calc = (numOne: number, numTwo: number, action: string) => {
+  if (action === "add") {
+    return numOne + numTwo;
+  } else {
+    return numOne - numTwo;
+  }
+};
+calc(5, 10, "add");
+```
+
+যখন আমরা Function Signature ব্যাবহার করবো কোনো ফাংশনের জন্য তখন আমাদের আগে ফাংশনটি ডিফাইন করে নিতে হয় সে কি কি কাজ করবে ( মানে তার বডি কি হবে ), সে কোন কোন টাইপের প্যারামিটার গ্রহণ করবে এবং কি রিটার্ন করবে এগুলো দিয়ে। তারপর যখন আমরা সেই ফাংশন ব্যবহার করতে যাবো তখন আমাদেরকে সাজেস্ট করা হবে যে এই ফাংশনে আমাদের এই এই জিনিস দিতে হবে আর না দিলে ইরর দেওয়া হবে আমাদের।
