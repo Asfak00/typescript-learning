@@ -10,6 +10,7 @@
 - [Abstract Class](#Abstract-Class)
 - [Encapsulation](#Encapsulation)
 - [Function Signature](#Function-Signature)
+- [Interface](#Interface)
 
 </br>
 
@@ -593,3 +594,44 @@ calc(5, 10, "add");
 ```
 
 যখন আমরা Function Signature ব্যাবহার করবো কোনো ফাংশনের জন্য তখন আমাদের আগে ফাংশনটি ডিফাইন করে নিতে হয় সে কি কি কাজ করবে ( মানে তার বডি কি হবে ), সে কোন কোন টাইপের প্যারামিটার গ্রহণ করবে এবং কি রিটার্ন করবে এগুলো দিয়ে। তারপর যখন আমরা সেই ফাংশন ব্যবহার করতে যাবো তখন আমাদেরকে সাজেস্ট করা হবে যে এই ফাংশনে আমাদের এই এই জিনিস দিতে হবে আর না দিলে ইরর দেওয়া হবে আমাদের।
+
+</br>
+
+# Interface
+
+Interface এর মাধ্যমে ডেটা টাইপ টেম্পলেট তৈরি করতে পারবো। যেটা আমরা চাই অনেক জায়গায় ব্যবহার করতে। এর মাধ্যমে আমাদের বারবার একই টাইপ লিখার প্রয়োজন হবে না আমরা একটি জায়গায় Interface এর সাহায্যে টেম্পলেট তৈরি করে রেখে দিবো তারপর বার বার ব্যবহার করতে পারবো। নিচে তার কোড দেখানো হলোঃ
+
+```js
+interface IUser {
+  id: number;
+  name: string;
+  age: number;
+}
+
+let users: IUser[] = [];
+
+let user1: IUser = {
+  id: 10,
+  name: "Rahi Ahmed",
+  age: 19,
+};
+
+let user2: IUser = {
+  id: 15,
+  name: "Alamin Ahmed",
+  age: 20,
+};
+
+users.push(user1);
+users.push(user2);
+
+let printAllUserInfo = (user: IUser) => {
+  console.log(
+    `User Id is ${user.id}, User Name is ${user.name} and User Age is ${user.age}`
+  );
+};
+
+users.forEach((user) => printAllUserInfo(user));
+```
+
+উপরে Interface এর সাহায্যে একটি ডেটা টাইপ টেম্পলেট বানানো হয়েছে যেটা অনেক জায়গায় ব্যবহার করা হয়েছে।
