@@ -11,6 +11,7 @@
 - [Encapsulation](#Encapsulation)
 - [Function Signature](#Function-Signature)
 - [Interface](#Interface)
+- [Generic Type](#Generic)
 
 </br>
 
@@ -635,3 +636,38 @@ users.forEach((user) => printAllUserInfo(user));
 ```
 
 উপরে Interface এর সাহায্যে একটি ডেটা টাইপ টেম্পলেট বানানো হয়েছে যেটা অনেক জায়গায় ব্যবহার করা হয়েছে।
+
+</br>
+
+# Generic
+
+Generic ব্যবহার করে আমরা আমাদের ডেটা টাইপ এমন করতে পারবো যে যেকোনো ডেটা দিলেও প্রোগ্রামে কোনো ইরর আসবে না। মানে যখন আমাদের প্রোগ্রামে যেকোনো টাইপের ডেটা আসতে পারে সম্ভাবনা রয়েছে সেক্ষেত্রে আমরা Generic ব্যবহার করতে পারি কারণ এটি আমাদের যেকোনো রকমের ডেটা টাইপ রিসিব করতে সাহায্য করে। নিচে ৩টি example দেওয়া হলোঃ
+
+```js
+// Generic with a single parameter
+function userInfo1<x>(user: x) {
+  console.log(user);
+}
+
+userInfo1("Rahi");
+
+// Generic with nultiple single parameter
+function userInfo2<x, y>(user: x, active: y) {
+  if (active) {
+    console.log(user);
+  }
+}
+
+userInfo2("Alamin", true);
+
+// user generic with arrow function
+const userInfo3 = <x, y>(user: x, active: y) => {
+  if (active) {
+    console.log(user);
+  }
+};
+
+userInfo2("Naim", false);
+```
+
+Generic ডিফাইন করার জন্য আমাদের `<>` দিতে হবে এবং এর মধ্যে আমাদের যে নাম দেওয়ার সেটা দিবো ( নামটি ডেটা টাইপের জায়গায় ব্যবহার করা হবে )। এবং মাল্টিপলের জন্যও দেখানো হয়েছে।
