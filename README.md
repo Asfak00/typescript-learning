@@ -99,7 +99,7 @@ Data Types এর মধ্যে **any** হচ্ছে সুপার ডে
 
 ```js
 let name = "Rahi Ahmed"; // String
-let Number = 123; // Number
+let number = 123; // Number
 let isMale = true; // Boolean
 let hasMoney = null; // Null
 let houseAddress = undefined; // Undefined
